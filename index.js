@@ -9,7 +9,7 @@ var path = require('path'),
 // Lets Make sure the Libraries are here
 var libDir = path.join(__dirname, 'lib'),
 	nodeDymoLib = path.join(libDir, 'NodeDymoLib.dll'),
-	dymoLibPath = path.join(libDir),
+	dymoLibPath = path.join('C:', 'Program Files (x86)', 'DYMO', 'DYMO Label Software', 'Framework'),
 	dymoAssemblies = [ 'DYMO.Label.Framework.dll', 'DYMO.DLS.Runtime.dll', 'DYMO.Common.dll', 'DYMOPrinting.dll', 'PrintingSupportLibrary.dll' ],
 	libsMoved = 0;
 
