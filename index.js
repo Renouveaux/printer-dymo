@@ -1,6 +1,6 @@
 var path = require('path'),
 	fs = require('fs'),
-	edge = require('electron-edge'),
+	edge = require('electron-edge-js'),
 	activePrinter,
 	initReady = false;
 
@@ -9,7 +9,7 @@ var path = require('path'),
 // Lets Make sure the Libraries are here
 var libDir = path.join(__dirname, 'lib'),
 	nodeDymoLib = path.join(libDir, 'NodeDymoLib.dll'),
-	dymoLibPath = path.join('C:', 'Program Files (x86)', 'DYMO', 'DYMO Label Software', 'Framework'),
+	dymoLibPath = path.join(libDir),
 	dymoAssemblies = [ 'DYMO.Label.Framework.dll', 'DYMO.DLS.Runtime.dll', 'DYMO.Common.dll', 'DYMOPrinting.dll', 'PrintingSupportLibrary.dll' ],
 	libsMoved = 0;
 
@@ -36,7 +36,6 @@ for( var f of dymoAssemblies ){
 //
 
 var ready = module.exports.ready = function(){
-	console.log("Printer-Dymo: ready() triggered");
 	return initReady;
 }
 
@@ -45,7 +44,6 @@ var ready = module.exports.ready = function(){
  * @return printer object info:
  */
  var getPrintersAsync = module.exports.getPrintersAsync = function( callback ){
-	console.log("Printer-Dymo: getPrinterAsync() triggered");
 	if( initReady != true ){	}
 
 	var availablePrinters = edge.func({
@@ -61,7 +59,6 @@ var ready = module.exports.ready = function(){
  *	Same as getPrinters but syncronice
  */
  var getPrinters = module.exports.getPrinters = function(){
-	console.log("Printer-Dymo: getPrinters() triggered");
 	if( initReady != true ){	}
 
 	var availablePrinters = edge.func({
